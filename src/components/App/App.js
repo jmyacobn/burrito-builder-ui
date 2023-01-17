@@ -8,17 +8,15 @@ class App extends Component {
   constructor(props) {
     super();
     this.state = {
-      orders: [{
-        id: 2,
-        name: "hello",
-        ingredients: ["olives", "mushrooms"]
-      }]
+      orders: []
     }
   }
 
   componentDidMount() {
     getOrders()
-      .catch(err => console.error('Error fetching:', err));
+      .then((data) => {
+        this.setState({orders: data.orders})
+      })
   }
 
   addNewOrder = (newOrder) => {
