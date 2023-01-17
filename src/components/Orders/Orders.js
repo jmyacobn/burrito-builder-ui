@@ -4,11 +4,11 @@ import './Orders.css';
 const Orders = ({orders, id}) => {
   const orderEls = orders.map(order => {
     return (
-      <div className="order" key={id}>
-        <h3>{order.name}</h3>
+      <div className="order" key={order.id}>
+        <h3 key={Date.now()+ order.name}>{order.name}</h3>
         <ul className="ingredient-list">
           {order.ingredients.map(ingredient => {
-            return <li key={id}>{ingredient}</li>
+            return <li key={ingredient}>{ingredient}</li>
           })}
         </ul>
       </div>
