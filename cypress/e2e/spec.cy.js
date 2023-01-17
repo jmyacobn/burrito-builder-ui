@@ -56,6 +56,4 @@ describe('Page Load User Flow', () => {
     cy.get('[name="steak"]').click()
       .get('p').contains("Order: beans, steak")
   })
-
-//When a user fills out the form, the information is reflected in the input field's value
 })
