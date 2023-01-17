@@ -22,8 +22,6 @@ class App extends Component {
   }
 
   addNewOrder = (newOrder) => {
-    console.log("HELLO WORLD")
-    console.log("HELLO", this.state)
     this.setState({orders: [...this.state.orders, newOrder]})
   }
 
