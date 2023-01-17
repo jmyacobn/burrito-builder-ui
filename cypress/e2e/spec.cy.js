@@ -52,10 +52,8 @@ describe('Page Load User Flow', () => {
       .type('Bob')
       .should('have.value', "Bob")
     cy.get('[name="beans"]').click()
-      .get('.submit-button').click()
       .get('p').contains("Order: beans")
     cy.get('[name="steak"]').click()
-      .get('.submit-button').click()
       .get('p').contains("Order: beans, steak")
   })
 
