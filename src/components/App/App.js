@@ -7,6 +7,13 @@ import OrderForm from '../../components/OrderForm/OrderForm';
 class App extends Component {
   constructor(props) {
     super();
+    this.state = {
+      orders: [{
+        id: 2,
+        name: "hello",
+        ingredients: ["olives", "mushrooms"]
+      }]
+    }
   }
 
   componentDidMount() {
@@ -14,12 +21,18 @@ class App extends Component {
       .catch(err => console.error('Error fetching:', err));
   }
 
+  addNewOrder = (newOrder) => {
+    console.log("HELLO WORLD")
+    console.log("HELLO", this.state)
+    this.setState({orders: [...this.state.orders, newOrder]})
+  }
+
   render() {
     return (
       <main className="App">
         <header>
           <h1>Burrito Builder</h1>
-          <OrderForm />
+          <OrderForm addNewOrder={this.addNewOrder}/>
         </header>
 
         <Orders orders={this.state.orders}/>
