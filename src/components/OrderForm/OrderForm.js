@@ -17,8 +17,12 @@ class OrderForm extends Component {
       name: this.state.name,
       ingredients: this.state.ingredients
     }
-    this.props.addNewOrder(newOrder)
-    this.clearInputs();
+    if(this.state.name.length && this.state.ingredients.length) {
+      this.props.addNewOrder(newOrder)
+      this.clearInputs();
+    } else {
+      console.log("MISSING FIELDS")
+    }
   }
 
   clearInputs = () => {

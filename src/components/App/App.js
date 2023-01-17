@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import {getOrders} from '../../apiCalls';
+import {getOrders, addOrders} from '../../apiCalls';
 import Orders from '../../components/Orders/Orders';
 import OrderForm from '../../components/OrderForm/OrderForm';
 
@@ -20,7 +20,10 @@ class App extends Component {
   }
 
   addNewOrder = (newOrder) => {
-    this.setState({orders: [...this.state.orders, newOrder]})
+    addOrders(newOrder)
+    .then((data) => {
+      this.setState({orders: [...this.state.orders, data]})
+    })
   }
 
   render() {
@@ -30,7 +33,6 @@ class App extends Component {
           <h1>Burrito Builder</h1>
           <OrderForm addNewOrder={this.addNewOrder}/>
         </header>
-
         <Orders orders={this.state.orders}/>
       </main>
     );

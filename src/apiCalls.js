@@ -7,3 +7,14 @@ export const getOrders = () => {
         return response.json()
       })
 }
+
+export const addOrders = (newOrder) => {
+  return fetch('http://localhost:3001/api/v1/orders', {
+    method: "POST",
+    body: JSON.stringify(newOrder),
+    headers: {
+      "Content-Type": "application/json"
+    }
+  })
+    .then(response => response.json())
+}
